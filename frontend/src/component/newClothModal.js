@@ -53,28 +53,28 @@ function NewClothModal({ open, handleClose, handleAddCloth }) {
 
   // Récupération des types depuis la BDD
   useEffect(() => {
-    fetch("http://localhost:5000/type")
+    fetch("http://localhost:5000/lists/types")
       .then((res) => res.json())
       .then((data) => setTypeList(data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/couleur")
+    fetch("http://localhost:5000/lists/couleurs")
       .then((res) => res.json())
       .then((data) => setColorList(data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/taille")
+    fetch("http://localhost:5000/lists/tailles")
       .then((res) => res.json())
       .then((data) => setTailleList(data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/marque")
+    fetch("http://localhost:5000/lists/marques")
       .then((res) => res.json())
       .then((data) => setMarqueList(data))
       .catch((err) => console.log(err));
