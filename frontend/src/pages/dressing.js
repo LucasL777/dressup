@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import NewClothModal from "../component/newClothModal";
 import NewOutfitModal from "../component/newOutfitModal";
 import EditClothModal from "../component/modifyClothModal";
+import LogoutButton from "../component/LogoutButton";
 
 function Dressing() {
   const navigate = useNavigate();
@@ -190,18 +191,7 @@ function Dressing() {
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ px: 3 }}>
-            <Button
-              onClick={handleLogout}
-              fullWidth
-              sx={{
-                backgroundColor: "#ff9a8d",
-                color: "#4a536b",
-                borderRadius: 3,
-                fontWeight: "bold",
-              }}
-            >
-              Déconnexion
-            </Button>
+            <LogoutButton />
           </Box>
         </Box>
       </Drawer>

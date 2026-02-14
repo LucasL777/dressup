@@ -5,5 +5,6 @@ const { isAuthenticated } = require('../middleware/auth.middleware');
 
 router.post('/login', authController.login);
 router.get('/me', isAuthenticated, authController.getMe);
+router.post('/logout', isAuthenticated, authController.logout);
 
 module.exports = router;

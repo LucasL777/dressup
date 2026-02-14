@@ -1,12 +1,14 @@
 import { Box, Drawer, Button, Typography, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../component/LogoutButton";
 
 function Menu() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  const handleLogout = () => navigate("/");
+  
+
 
   useEffect(() => {
   const fetchMe = async () => {
@@ -106,21 +108,7 @@ function Menu() {
 
           {/* Bouton Déconnexion */}
           <Box sx={{ px: 3, pb: 3 }}>
-            <Button
-              onClick={handleLogout}
-              fullWidth
-              sx={{
-                backgroundColor: "#ff9a8d",
-                color: "#4a536b",
-                borderRadius: 3,
-                fontWeight: "bold",
-                "&:hover": {
-                  backgroundColor: "#ff7f73",
-                },
-              }}
-            >
-              Déconnexion
-            </Button>
+            <LogoutButton />
           </Box>
         </Box>
       </Drawer>

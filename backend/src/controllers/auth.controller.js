@@ -27,5 +27,20 @@ exports.login = (req, res) => {
 };
 
 exports.getMe = (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ message: "Non connecté" });
+  }
   res.json(req.session.user);
+};
+
+
+exports.logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: "Erreur lors de la déconnexion" });
+    }
+
+    res.clearCookie("connect.sid"); // nom du cookie par défaut
+    res.json({ message: "Déconnexion réussie" });
+  });
 };
