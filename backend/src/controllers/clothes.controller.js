@@ -2,7 +2,7 @@ const db = require('../../db');
 
 exports.getClothes = (req, res) => {
   db.query(
-    'SELECT type_label, color_label, marque_label FROM habits WHERE id_user = ?;',
+    'SELECT type_label, color_label, size_label, marque_label FROM habits WHERE id_user = ?;',
     [req.session.user.id],
     (err, results) => {
       if (err) return res.status(500).json({ error: err.message });

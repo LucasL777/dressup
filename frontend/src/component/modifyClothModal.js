@@ -26,13 +26,25 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
      Préremplissage
   ====================== */
   useEffect(() => {
+  if (open && cloth && typeList.length && colorList.length && marqueList.length) {
+    // Types
+    const typeObj = typeList.find((t) => t.label === cloth.type_label);
+    setSelectedType(typeObj ? typeObj.id : "");
 
-    if (open && cloth) {
-      setSelectedType(cloth.type_label);
-      setSelectedColor(cloth.color_label);
-      setSelectedMarque(cloth.marque_label);
-    }
-  }, [open, cloth]);
+    // Couleurs
+    const colorObj = colorList.find((c) => c.label === cloth.color_label);
+    setSelectedColor(colorObj ? colorObj.id : "");
+
+    // Tailles
+    const tailleObj = tailleList.find((t) => t.label === cloth.taille_label);
+    setSelectedTaille(tailleObj ? tailleObj.id : "");
+
+    // Marques
+    const marqueObj = marqueList.find((m) => m.label === cloth.marque_label);
+    setSelectedMarque(marqueObj ? marqueObj.id : "");
+  }
+}, [open, cloth, typeList, colorList, tailleList, marqueList]);
+
 
   /* ======================
      Fetch des listes
@@ -133,7 +145,7 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
               <em>Taille</em>
             </MenuItem>
             {tailleList.map((taille) => (
-              <MenuItem key={taille.id} value={taille.label}>
+              <MenuItem key={taille.id} value={taille.id}>
                 {taille.label}
               </MenuItem>
             ))}
