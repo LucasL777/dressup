@@ -36,7 +36,7 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
     setSelectedColor(colorObj ? colorObj.id : "");
 
     // Tailles
-    const tailleObj = tailleList.find((t) => t.label === cloth.taille_label);
+    const tailleObj = tailleList.find((t) => t.label === cloth.size_label);
     setSelectedTaille(tailleObj ? tailleObj.id : "");
 
     // Marques
@@ -77,7 +77,7 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
      Submit
   ====================== */
   const handleSubmit = () => {
-    if (!selectedType || !selectedColor || !selectedMarque) return;
+    if (!selectedType || !selectedColor || !selectedMarque || !selectedTaille) return;
 
     handleUpdateCloth({
       id: cloth.id,

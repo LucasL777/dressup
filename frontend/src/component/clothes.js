@@ -6,18 +6,18 @@ import {
   CardContent,
   Fab,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import NewClothModal from "../component/newClothModal";
 import EditClothModal from "../component/modifyClothModal";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function Clothes() {
     const [clothesList, setClothesList] = useState([]);
-
     const [newClothModal, setNewClothModal] = useState(false);
     const [editClothModal, setEditClothModal] = useState(false);
     const [selectedEditCloth, setSelectedEditCloth] = useState(null);
 
+
+    //récupération des vêtements en BDD
     useEffect(() => {
     fetch("http://localhost:5000/clothes", { credentials: "include" })
       .then(res => res.json())
@@ -35,6 +35,8 @@ export default function Clothes() {
       });
   }, []);
 
+
+    // Ajout d'un vêtement en BDD  
     const handleAddCloth = async ({ type, color, taille, marque }) => {
     try {
       const response = await fetch("http://localhost:5000/newCloth", {
@@ -51,6 +53,8 @@ export default function Clothes() {
     }
   };
 
+
+  // Modification d'un vêtement en BDD
   const handleUpdateCloth = async (updatedCloth) => {
     try {
       const response = await fetch(
@@ -61,10 +65,9 @@ export default function Clothes() {
           body: JSON.stringify(updatedCloth),
         }
       );
-
       const updated = await response.json();
 
-      // 🔥 mise à jour de la liste locale
+      //  mise à jour de la liste locale
       setClothesList(prev =>
         prev.map(cloth => (cloth.id === updated.id ? updated : cloth))
       );
