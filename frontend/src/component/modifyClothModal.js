@@ -38,25 +38,25 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
      Fetch des listes
   ====================== */
   useEffect(() => {
-    fetch("http://localhost:5000/type")
+    fetch("http://localhost:5000/lists/types")
       .then(res => res.json())
       .then(setTypeList);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/couleur")
+    fetch("http://localhost:5000/lists/couleurs")
       .then(res => res.json())
       .then(setColorList);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/taille")
+    fetch("http://localhost:5000/lists/tailles")
       .then(res => res.json())
       .then(setTailleList);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/marque")
+    fetch("http://localhost:5000/lists/marques")
       .then(res => res.json())
       .then(setMarqueList);
   }, []);

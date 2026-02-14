@@ -19,7 +19,7 @@ function Accueil() {
   // gestion de la connexion
   const handleLogin = async (login) => {
   try {
-    const response = await fetch("http://localhost:5000/connexion", {
+    const response = await fetch("http://localhost:5000/auth/login", {
       method: "POST",
       credentials: "include", // important pour cookies
       headers: { "Content-Type": "application/json"},
