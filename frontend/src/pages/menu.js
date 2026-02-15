@@ -7,19 +7,16 @@ function Menu() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  
-
-
   useEffect(() => {
   const fetchMe = async () => {
     try {
-      const res = await fetch("http://localhost:5000/me", { credentials: "include", method : "GET" }); // important pour cookies
+      const res = await fetch("http://localhost:5000/getMe", { credentials: "include", method : "GET" }); // important pour cookies
       const text = await res.text();
       try {
         const data = JSON.parse(text);
         if (!res.ok) throw new Error(data.message || "Erreur");
         setUser(data);
-      } catch {
+      } catch (e) {
         console.error("Réponse /me non JSON :", text);
       }
     } catch (err) {

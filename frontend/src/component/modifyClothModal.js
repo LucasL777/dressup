@@ -77,7 +77,7 @@ function EditClothModal({ open, handleClose, handleUpdateCloth, cloth }) {
      Submit
   ====================== */
   const handleSubmit = () => {
-    if (!selectedType || !selectedColor || !selectedMarque || !selectedTaille) return;
+    if (!selectedType && !selectedColor && !selectedMarque && !selectedTaille) return;
 
     handleUpdateCloth({
       id: cloth.id,

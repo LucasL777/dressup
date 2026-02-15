@@ -39,7 +39,7 @@ export default function Clothes() {
     // Ajout d'un vêtement en BDD  
     const handleAddCloth = async ({ type, color, taille, marque }) => {
     try {
-      const response = await fetch("http://localhost:5000/newCloth", {
+      const response = await fetch("http://localhost:5000/clothes", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -55,14 +55,15 @@ export default function Clothes() {
 
 
   // Modification d'un vêtement en BDD
-  const handleUpdateCloth = async (updatedCloth) => {
+  const handleUpdateCloth = async (id, type, color, taille, marque) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/clothes/${updatedCloth.id}`,
+        `http://localhost:5000/clothes/${id}`,
         {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updatedCloth),
+            method: "PUT", 
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ type, color, taille, marque }),
         }
       );
       const updated = await response.json();
